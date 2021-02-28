@@ -5,6 +5,11 @@
 *.tfstate
 *.tfstate.*
 
+# Secrets
+*secrets.tfvars
+
+*.lock.hcl*
+
 # Crash log files
 crash.log
 
