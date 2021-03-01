@@ -10,7 +10,7 @@ variable "location" {
   type = string
 }
 
-# The sensitive = true configuration ensures no accidentally exposed secrets in CLI output, log output, or source control
+# The sensitive = true configuration ensures no accidentally exposed secrets in CLI output, log output, or source control   
 variable "password" {
   type = string
   sensitive = true
