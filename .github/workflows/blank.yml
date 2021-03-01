@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      working_directory: SQL-Server-Creation
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: HashiCorp - Setup Terraform
+      uses: hashicorp/setup-terraform@v1.2.1
+      
+    - name: Terraform Init
+      id: init
+      run: terraform init
+      working-directory: ${{ env.working_directory }}
+      
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan
+      working-directory: ${{ env.working_directory }}
+
