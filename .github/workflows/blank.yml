@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      working_directory: SQL-Server-Creation
 
     steps:
     - name: Checkout
@@ -21,5 +23,7 @@ jobs:
       
     - name: Terraform Init
       id: init
-      run: cd 'SQL-Server-Creation' && terraform init
+      run: terraform init
+      working-directory: ${{ env.working_directory }}
+      # run: cd 'SQL-Server-Creation' && terraform init
 
