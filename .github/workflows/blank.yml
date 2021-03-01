@@ -25,5 +25,9 @@ jobs:
       id: init
       run: terraform init
       working-directory: ${{ env.working_directory }}
-      # run: cd 'SQL-Server-Creation' && terraform init
+      
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan
+      working-directory: ${{ env.working_directory }}
 
