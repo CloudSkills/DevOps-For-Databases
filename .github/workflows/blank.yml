@@ -21,5 +21,5 @@ jobs:
       
     - name: Terraform Init
       id: init
-      run: terraform init
+      run: cd 'SQL-Server-Creation' && terraform init
 
