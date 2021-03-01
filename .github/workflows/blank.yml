@@ -18,3 +18,8 @@ jobs:
 
     - name: HashiCorp - Setup Terraform
       uses: hashicorp/setup-terraform@v1.2.1
+      
+    - name: Terraform Init
+      id: init
+      run: terraform init
+
