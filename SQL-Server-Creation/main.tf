@@ -24,3 +24,12 @@ resource "azurerm_mysql_server" "devopsdatabase" {
   public_network_access_enabled     = true
   ssl_enforcement_enabled           = false
 }
+
+
+resource "azurerm_mysql_firewall_rule" "firewallrule" {
+  name                = "office"
+  resource_group_name = azurerm_mysql_server.devopsdatabase.resource_group_name
+  server_name         = azurerm_mysql_server.devopsdatabase.name
+  start_ip_address    = var.ip_address
+  end_ip_address      = var.ip_address
+}
