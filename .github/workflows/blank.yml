@@ -1,4 +1,4 @@
-name: CI
+name: Build and Deploy MySQL for Azure
 
 on:
   push:
@@ -28,6 +28,6 @@ jobs:
       
     - name: Terraform Plan
       id: plan
-      run: terraform plan
+      run: terraform plan -var="password=${{ secrets.SQL_PASSWORD }}" -var="ip_address=$${{ secrets.IP_ADDRESS }}"
       working-directory: ${{ env.working_directory }}
 
