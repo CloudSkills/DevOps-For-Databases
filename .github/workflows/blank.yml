@@ -13,16 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       working_directory: SQL-Server-Creation
+      CLIENT_ID: 1073055c-2228-416f-8abd-fefd8ea55593
+      CLIENT_SECRET: ${{secrets.CLIENT_SECRET}}
+      SUBSCRIPTION_ID: 220284d2-6a19-4781-87f8-5c564ec4fec9
+      TENANT_ID: fbbd9689-2869-42b8-92fb-db1c89b662ff
 
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      
-    - name: Azure Login
-      uses: Azure/login@v1
-      with:
-        # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: HashiCorp - Setup Terraform
       uses: hashicorp/setup-terraform@v1.2.1
