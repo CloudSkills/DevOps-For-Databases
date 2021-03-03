@@ -1,0 +1,27 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+strategy:
+  matrix:
+    Python37:
+      python.version: '3.7'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+  displayName: 'Use Python $(python.version)'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
+
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'filePath'
+    workingDirectory: 'SQL-Test'
+    scriptPath: 'SQL-Test/Test_SQL.py'
+    arguments: 'mysqladmin@databasedevops9292 $(PASSWORD) databasedevops9292.mysql.database.azure.com cloudskills'
