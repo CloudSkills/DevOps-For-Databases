@@ -1,1 +1,1 @@
-mysql --host=your_host_name.mysql.database.azure.com -u your_sql_username@your_host_name -p
+mysql --host=$HOSTNAME.mysql.database.azure.com -u $USERNAME@$HOSTNAME -p
